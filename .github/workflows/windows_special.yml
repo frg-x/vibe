@@ -20,18 +20,25 @@ jobs:
             fail-fast: false
             matrix:
                 include:
-                    # Windows no AVX2
-                    - platform: "windows-latest"
-                      args: '--features "server"'
-                      pre-build-args: "--older-cpu"
-                      name: "older-cpu"
-                      rust-version: "stable"
+                    # # Windows no AVX2
+                    # - platform: "windows-latest"
+                    #   args: '--features "server"'
+                    #   pre-build-args: "--older-cpu"
+                    #   name: "older-cpu"
+                    #   rust-version: "stable"
 
-                    # Windows no AVX2
+                    # # Windows no AVX2
+                    # - platform: "windows-latest"
+                    #   args: '--features="vulkan,server"'
+                    #   pre-build-args: "--older-cpu --vulkan"
+                    #   name: "older-cpu-vulkan"
+                    #   rust-version: "stable"
+
+                    # Windows no AVX2 + Cuda + Server
                     - platform: "windows-latest"
-                      args: '--features="vulkan,server"'
-                      pre-build-args: "--older-cpu --vulkan"
-                      name: "older-cpu-vulkan"
+                      args: '--features "server,cuda"'
+                      pre-build-args: "--portable --older-cpu --cuda"
+                      name: "portable_older-cpu_cuda_server"
                       rust-version: "stable"
                     
                     # # Windows cuda 12.5.0
@@ -50,12 +57,12 @@ jobs:
                     #   cuda-verison: '11.8.0'
                     #   rust-version: "stable"                      
 
-                    # Windows portable
-                    - platform: "windows-latest" # Windows x86_64
-                      args: '--features="vulkan"'
-                      pre-build-args: "--portable --vulkan"
-                      name: portable
-                      rust-version: "stable"
+                    # # Windows portable
+                    # - platform: "windows-latest" # Windows x86_64
+                    #   args: '--features="vulkan"'
+                    #   pre-build-args: "--portable --vulkan"
+                    #   name: portable
+                    #   rust-version: "stable"
 
         runs-on: ${{ matrix.platform }}
         steps:
