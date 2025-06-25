@@ -39,6 +39,7 @@ jobs:
                       args: '--features "server,cuda"'
                       pre-build-args: "--portable --older-cpu --cuda"
                       name: "portable_older-cpu_cuda_server"
+                      cuda-verison: '12.5.0'
                       rust-version: "stable"
                     
                     # # Windows cuda 12.5.0
