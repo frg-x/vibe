@@ -34,12 +34,12 @@ jobs:
                     #   name: "older-cpu-vulkan"
                     #   rust-version: "stable"
 
-                    # Windows no AVX2 + Cuda + Server
+                    # Windows no AVX2 + Cuda 12.5.0 + Server
                     - platform: "windows-latest"
                       args: '--features "server,cuda"'
                       pre-build-args: "--portable --older-cpu --cuda"
                       name: "portable_older-cpu_cuda_server"
-                      cuda-verison: '12.3.0'
+                      cuda-verison: '12.5.0'
                       rust-version: "stable"
                     
                     # # Windows cuda 12.5.0
